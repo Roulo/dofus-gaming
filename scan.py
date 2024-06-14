@@ -11,6 +11,7 @@ while 1:
         pyautogui.moveTo(pos[0], pos[1])
         pyautogui.click()
         pyautogui.moveTo(initial_pos)
+        #scroll down
     #if user presses 'q' key, it will break the loop
     if keyboard.is_pressed('y'):
         break
