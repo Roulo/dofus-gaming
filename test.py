@@ -1,12 +1,23 @@
-#python program that pass the cursor fastly through the screen
-
 import pyautogui
 import time
+import keyboard
 
-time.sleep(5)
+# Define the color to be detected (RGB format)
+target_color = (38,37,26)
+
+# Function to check the color at the current cursor position
+def detect_color(x, y, target_color):
+    screen = pyautogui.screenshot()
+    current_color = screen.getpixel((x, y))
+    return current_color == target_color
 
 for i in range(1000):
-    pyautogui.moveTo(100, 100, duration=0.25)
-    pyautogui.moveTo(200, 100, duration=0.25)
-    pyautogui.moveTo(200, 200, duration=0.25)
-    pyautogui.moveTo(100, 200, duration=0.25)
+    if keyboard.is_pressed('y'):
+        break
+    
+    positions = [(100, 100), (200, 100), (200, 200), (100, 200)]
+    
+    for pos in positions:
+        pyautogui.moveTo(pos[0], pos[1], duration=0.1)
+        if detect_color(pos[0], pos[1], target_color):
+            print("test")
