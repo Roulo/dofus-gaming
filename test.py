@@ -1,15 +1,12 @@
-#python program that pass the cursor through the screen and detects the image
+#python program that pass the cursor fastly through the screen
 
+import pyautogui
+import time
 
-import cv2
-import numpy as np
+time.sleep(5)
 
-
-from screen_search i
-
-    for i in range(1, 1920, 10):
-        pyautogui.moveTo(i, 0)
-        pos = search.imagesearch()
-        if pos[0] != -1:
-            pyautogui.moveTo(pos[0], pos[1])
-            break
+for i in range(1000):
+    pyautogui.moveTo(100, 100, duration=0.25)
+    pyautogui.moveTo(200, 100, duration=0.25)
+    pyautogui.moveTo(200, 200, duration=0.25)
+    pyautogui.moveTo(100, 200, duration=0.25)
