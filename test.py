@@ -15,7 +15,7 @@ def detect_color(x, y, target_color):
     return current_color == target_color
 
 def main():
-    step_size = 100  # Define the step size for zigzag motion
+    step_size = 25  # Define the step size for zigzag motion
     positions = []
 
     # Create a zigzag path, starting from (1, 1)
@@ -29,14 +29,30 @@ def main():
             for x in range(screen_width - 1, 0, -step_size):
                 positions.append((x, y))
 
+    time_per_step = 1.5 / (screen_width // step_size)  # Calculate time per step for 1.5 seconds per row
+
     while True:
         if keyboard.is_pressed('y'):
             break
-        for pos in positions:
-            pyautogui.moveTo(pos[0], pos[1], duration=0.1)  # Adjust duration for faster movement
-            if detect_color(pos[0], pos[1], target_color):
-                print("test")
+        for y in range(1, screen_height, step_size):
+            if ((y - 1) // step_size) % 2 == 0:
+                # Move right
+                for x in range(1, screen_width, step_size):
+                    pyautogui.moveTo(x, y, duration=time_per_step)  # Adjust duration for each step
+                    if detect_color(x, y, target_color):
+                        print("test")
+                    if keyboard.is_pressed('y'):
+                        break
+            else:
+                # Move left
+                for x in range(screen_width - 1, 0, -step_size):
+                    pyautogui.moveTo(x, y, duration=time_per_step)  # Adjust duration for each step
+                    if detect_color(x, y, target_color):
+                        print("test")
+                    if keyboard.is_pressed('y'):
+                        break
             if keyboard.is_pressed('y'):
                 break
+
 if __name__ == "__main__":
     main()
