@@ -68,14 +68,10 @@ def main():
                     if keyboard.is_pressed('y'):
                         break
             
-            time.sleep(0.5)
+            time.sleep(0.1)
         
         if keyboard.is_pressed('y'):
             break
-
-if __name__ == "__main__":
-    main()
-
 
 if __name__ == "__main__":
     main()
