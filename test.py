@@ -33,7 +33,7 @@ def main():
         if keyboard.is_pressed('y'):
             break
         for pos in positions:
-            pyautogui.moveTo(pos[0], pos[1], duration=5)  # Adjust duration for faster movement
+            pyautogui.moveTo(pos[0], pos[1], duration=0.1)  # Adjust duration for faster movement
             if detect_color(pos[0], pos[1], target_color):
                 print("test")
             if keyboard.is_pressed('y'):
